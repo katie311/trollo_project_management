@@ -1,0 +1,31 @@
+<nav class="ui menu">
+  <div class="header item">  
+    <%= link_to "Boards", boards_path, class: "item" %>
+  </div>
+  <a class="item">
+  <%= link_to "Add Board", new_board_path, class: "item" %>
+  </a>
+  <div class="right menu">
+    <% if current_user %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "item" %>
+    <% else %>
+      <%= link_to "Register", new_user_registration_path, class: "item" %>
+      <%= link_to "Login", new_user_session_path, class: "item" %>
+    <% end %>
+  </div>
+</nav>
+
+<%# <div class="ui menu">
+  <div class="header item">
+    Our Company
+  </div>
+  <a class="item">
+    About Us
+  </a>
+  <a class="item">
+    Jobs
+  </a>
+  <a class="item">
+    Locations
+  </a>
+</div> %>
