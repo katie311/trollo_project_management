@@ -1,6 +1,6 @@
 <h1><%= @list.list_name %> Tasks</h1>
 <br />
-<%= link_to "Back", board_list_path(@board[:id]) %>
+<%= link_to "Back", board_list_path(@board.lists) %>
 <hr/>
 <div class="ui cards">
         <% @list.tasks.each do |task| %>
@@ -9,6 +9,7 @@
                 <div class="header"><h4><%= task.task_priority %> | 
                     <%= task.task_name %></h4>
                 </div>
+                <br>
                 <div class="description">
                     <%= task.task_description %>
                 </div>
@@ -24,6 +25,7 @@
             <% end %>
         <% end %>
 </div>
+<br>
 <%= link_to "Add Task to List", new_list_task_path(@list) %>
 
 <br/>

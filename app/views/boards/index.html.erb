@@ -6,10 +6,6 @@
     <div class="card">
       <div class="header"><h2><%= link_to board.board_name, board %></h2></div>
         <div class="extra content">
-          <div class="ui two buttons">
-            <%= link_to "Edit", edit_board_path(:id), class: "ui orange button small" %>
-            <%= link_to "Delete", @board, method: :delete, class: "ui red button small" %>
-          </div>
         </div>
     </div>
   <% end %>
