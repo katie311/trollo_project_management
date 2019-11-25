@@ -1,25 +1,47 @@
-<h1><%= @list.list_name %></h1>
+<h1><%= @list.list_name %> Tasks</h1>
 <br />
+<%= link_to "Back", board_list_path(@board[:id]) %>
 <hr/>
-<h2>Tasks</h2>
-<% @list.tasks.each do |task| %>
-    <% if task.completed? == false %>
-    <%= task.task_priority %> | 
-    <%= task.task_name %>
-    <br />
-    <%= task.task_description %>
-    <br />
-    <%= link_to "Edit ", edit_list_task_path(@list, task), class: "ui orange button small" %> <%= link_to "Delete", list_task_path(@list, task), method: :delete, class: "ui red button" %> | <%= link_to "Mark as Complete", completed_path(@list, task), method: :patch, class: "ui button" %>
-<br />
-
-<%end%>
-<% end %>
-
+<div class="ui cards">
+        <% @list.tasks.each do |task| %>
+            <% if task.completed? == false %>
+            <div class="card">
+                <div class="header"><h4><%= task.task_priority %> | 
+                    <%= task.task_name %></h4>
+                </div>
+                <div class="description">
+                    <%= task.task_description %>
+                </div>
+                <br/>
+                <div class="two ui buttons">
+                    <%= link_to "Edit ", edit_list_task_path(@list, task), class: "ui orange button small" %> <%= link_to "Delete", list_task_path(@list, task), method: :delete, class: "ui red button small" %>
+                    <br/>
+                    </div>
+                    <div class="ui button">
+                    <%= link_to "Mark as Complete", completed_path(@list, task), method: :patch, class: "ui button" %>
+                </div>
+                </div>
+            <% end %>
+        <% end %>
+</div>
 <%= link_to "Add Task to List", new_list_task_path(@list) %>
 
-<h2>Completed Tasks</h2>
-<% @list.tasks.each do |task| %>
-    <% if task.completed? %>
-    <h5><%= task.task_name %></h5>
-<% end %>
-<% end %>
+<br/>
+<br/>
+<hr>
+<div class="ui cards">
+<div class="card">
+    <div class="header">
+        <h2>Completed Tasks</h2>
+    </div>
+    <div class="content">
+        <% @list.tasks.each do |task| %>
+            <% if task.completed? %>
+            <h5><%= task.task_name %></h5>
+        <% end %>
+        <% end %>
+    </div>
+</div>
+</div>
+
+
